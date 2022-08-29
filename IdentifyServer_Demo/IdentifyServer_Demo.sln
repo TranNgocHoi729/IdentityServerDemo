@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentifyServer_Demo", "Iden
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "..\DataAccess\DataAccess.csproj", "{97278C37-3AF6-40D3-A7AD-A10E86A4A182}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaffeShop_IdentityServer", "..\CaffeShop_IdentityServer\CaffeShop_IdentityServer.csproj", "{AFB943FE-1B61-4DCC-8754-8C9B72632F55}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{97278C37-3AF6-40D3-A7AD-A10E86A4A182}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97278C37-3AF6-40D3-A7AD-A10E86A4A182}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97278C37-3AF6-40D3-A7AD-A10E86A4A182}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFB943FE-1B61-4DCC-8754-8C9B72632F55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFB943FE-1B61-4DCC-8754-8C9B72632F55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFB943FE-1B61-4DCC-8754-8C9B72632F55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFB943FE-1B61-4DCC-8754-8C9B72632F55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
