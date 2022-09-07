@@ -1,14 +1,10 @@
-using IdentifyServer_Demo.Extensions.WebApplicationExtension;
+
+using IdentifyServer_Demo.Installer;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
-builder.Services.AddControllers();
-
-#region Extension service
-builder.ConfigureServiceBuilder();
-#endregion
+// Autiomation Install Service
+builder.InstallerServiceInAssembly();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

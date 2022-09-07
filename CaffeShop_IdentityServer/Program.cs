@@ -1,24 +1,12 @@
+using CaffeShop_IdentityServer.Installer;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("ConnectionDbIdentityServer");
-// Configure IdentityServer4
-var assembly = typeof(Program).Assembly.GetName().Name;
-builder.Services.AddIdentityServer()
-    .AddConfigurationStore(options =>
-    {
-        options.ConfigureDbContext = b => b.UseSqlServer(connectionString, otp => otp.MigrationsAssembly(assembly));
-    })
-    .AddOperationalStore(options =>
-    {
-        options.ConfigureDbContext = b => b.UseSqlServer(connectionString, otp => otp.MigrationsAssembly(assembly));
-    })
-    .AddDeveloperSigningCredential();
 
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.InstallerServiceInAssembly();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

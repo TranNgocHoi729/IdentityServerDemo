@@ -19,11 +19,20 @@ namespace DataAccess.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ConfigDataType();
+            modelBuilder.ConfigRelationship();
+            modelBuilder.ConfigIndex();
             modelBuilder.Seeding();
         }
 
-        public DbSet<CoffeShop> CoffeShops { get; set; }
+        public DbSet<Permission> Permissions { get; set; }
 
+        public DbSet<Role> Roles { get; set; }
+
+        public DbSet<User> Users { get; set; }
+
+        public DbSet<UserRole> UserRoles { get; set; }
+
+        public DbSet<RolePermission> RolePermissions { get; set; }
 
     }
 }
