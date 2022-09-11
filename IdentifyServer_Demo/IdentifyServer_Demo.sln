@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentifyServer_Demo", "IdentifyServer_Demo.csproj", "{B80AE40E-637F-4E93-832D-C6B6AF533BC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentifyServer_Demo", "IdentifyServer_Demo.csproj", "{B80AE40E-637F-4E93-832D-C6B6AF533BC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "..\DataAccess\DataAccess.csproj", "{97278C37-3AF6-40D3-A7AD-A10E86A4A182}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "..\DataAccess\DataAccess.csproj", "{97278C37-3AF6-40D3-A7AD-A10E86A4A182}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity", "..\Identity\Identity.csproj", "{75EEAFA2-2AA7-4171-BBB0-489D0A297227}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{97278C37-3AF6-40D3-A7AD-A10E86A4A182}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97278C37-3AF6-40D3-A7AD-A10E86A4A182}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97278C37-3AF6-40D3-A7AD-A10E86A4A182}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75EEAFA2-2AA7-4171-BBB0-489D0A297227}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75EEAFA2-2AA7-4171-BBB0-489D0A297227}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75EEAFA2-2AA7-4171-BBB0-489D0A297227}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75EEAFA2-2AA7-4171-BBB0-489D0A297227}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
