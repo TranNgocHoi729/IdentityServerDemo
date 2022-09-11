@@ -26,6 +26,33 @@ namespace Identity.Repositories
             return _user;
         }
 
+        private List<string> ListPermissionCode(User user)
+        {
+            var _permissions = new List<string>();
+            var _listRole = _context.UserRoles.Where(a => a.UserId.Equals(user.Id)).Select(a => a.RoleId);
+            var _result = _context.RolePermissions.Where(a => _listRole.Contains(a.RoleId)).Select(a => a.PermissionId).ToList();
+            var ListPermissionCode = _context.Permissions.Where(a => _result.Contains(a.Id)).Select(a => a.PermissionCode).Distinct().ToList();
+            return ListPermissionCode;
+        }
+
+        private List<Claim> CreateClaimIdentity(User _User, List<string> PermissionCode)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
+                new Claim("ID", _User.Id.ToString()),
+                new Claim("Username", _User.UserName)
+            };
+
+            foreach (var item in PermissionCode)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, item));
+            }
+            return claims;
+        }
+
         public async Task<JWTTokenResult> GetJWTToken(UserLoginModel user)
         {
             try
@@ -40,17 +67,12 @@ namespace Identity.Repositories
                         Token = ""
                     };
                 }
+                var _listPermission = ListPermissionCode(_User);
+                var _listClaims = CreateClaimIdentity(_User, _listPermission);
                 var jwtTokenHandler = new JwtSecurityTokenHandler();
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
-                    Subject = new ClaimsIdentity(new[]
-                    {
-                        new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
-                        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                        new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                        new Claim("ID", _User.Id.ToString()),
-                        new Claim("Username", _User.UserName)
-                    }),
+                    Subject = new ClaimsIdentity(),
                     Expires = DateTime.UtcNow.AddMinutes(30),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"])), SecurityAlgorithms.HmacSha256),
                     Audience = _configuration["Jwt:Audience"],
