@@ -10,6 +10,10 @@ namespace DataAccess.ModelBuilderExtensions
 {
     public static class ConfigureBuilder
     {
+        private const string AdminAccountId = "dhgfd55-4234jdf-efhjsk-fshdbe-334jsfgs-486sdh";
+
+        private const string AdminRoleId = "gafsakfi-efhjsk-fshdbe-334jsfgs-486h";
+
         private const string ShortString = "varchar(50)";
 
         private const string MediumString = "varchar(100)";
@@ -18,7 +22,7 @@ namespace DataAccess.ModelBuilderExtensions
 
         private const string IntType = "int";
 
-        private const string TimeType = "DateTime";
+        private const string TimeType = "datetime2";
 
         public static void ConfigDataType(this ModelBuilder modelBuilder)
         {
@@ -75,7 +79,8 @@ namespace DataAccess.ModelBuilderExtensions
                 a.Property(p => p.UserId).HasColumnType(LongString);
                 a.HasKey(key => new
                 {
-                    key.RoleId, key.UserId
+                    key.RoleId,
+                    key.UserId
                 });
             });
 
@@ -110,7 +115,132 @@ namespace DataAccess.ModelBuilderExtensions
 
         public static void Seeding(this ModelBuilder modelBuilder)
         {
+            
 
+            modelBuilder.Entity<Permission>().HasData(
+                    new Permission
+                    {
+                        Id = "1",
+                        CreatedBy = "",
+                        CreatedOn = DateTime.Now,
+                        Description = "",
+                        ModifiedBy = "",
+                        ModifiedOn = DateTime.Now,
+                        PermissionCode = "USER",
+                        PermissionName = "USER",
+                        PermissionOrder = 1,
+                        Status = Enums.Status.ACTIVED
+                    },
+                    new Permission
+                    {
+                        Id = "2",
+                        CreatedBy = "",
+                        CreatedOn = DateTime.Now,
+                        Description = "",
+                        ModifiedBy = "",
+                        ModifiedOn = DateTime.Now,
+                        PermissionCode = "USER-DELETE",
+                        PermissionName = "USER-DELETE",
+                        PermissionOrder = 2,
+                        Status = Enums.Status.ACTIVED
+                    },
+                    new Permission
+                    {
+                        Id = "3",
+                        CreatedBy = "",
+                        CreatedOn = DateTime.Now,
+                        Description = "",
+                        ModifiedBy = "",
+                        ModifiedOn = DateTime.Now,
+                        PermissionCode = "USER-UPDATE",
+                        PermissionName = "USER-UPDATE",
+                        PermissionOrder = 2,
+                        Status = Enums.Status.ACTIVED
+                    },
+                    new Permission
+                    {
+                        Id = "4",
+                        CreatedBy = "",
+                        CreatedOn = DateTime.Now,
+                        Description = "",
+                        ModifiedBy = "",
+                        ModifiedOn = DateTime.Now,
+                        PermissionCode = "USER-ADD",
+                        PermissionName = "USER-ADD",
+                        PermissionOrder = 2,
+                        Status = Enums.Status.ACTIVED
+                    }
+                );
+            modelBuilder.Entity<Role>().HasData(
+                new Role
+                {
+                    Id = AdminRoleId,
+                    CreatedBy = "",
+                    CreatedOn = DateTime.Now,
+                    Description = "",
+                    ModifiedBy = "",
+                    ModifiedOn = DateTime.Now,
+                    RoleName = "Admin",
+                    Status = Enums.Status.ACTIVED
+                },
+                new Role
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    CreatedBy = "",
+                    CreatedOn = DateTime.Now,
+                    Description = "",
+                    ModifiedBy = "",
+                    ModifiedOn = DateTime.Now,
+                    RoleName = "UserViewer",
+                    Status = Enums.Status.ACTIVED
+                }
+            );
+
+            modelBuilder.Entity<User>().HasData(
+                new User
+                {
+                    Id = AdminAccountId,
+                    FullName = "Admin",
+                    Password = "Admin",
+                    Status = Enums.Status.ACTIVED,
+                    UserName = "Admin",
+                    Email = "CMCglobal_AGOS@gmail.com"
+                },
+                new User
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    FullName = "Viewer",
+                    Password = "Viewer",
+                    Status = Enums.Status.ACTIVED,
+                    UserName = "Viewer",
+                    Email = "CMCglobal_AGOS@gmail.com"
+                }
+            );
+
+            modelBuilder.Entity<UserRole>().HasData(
+                new UserRole
+                {
+                    RoleId = AdminRoleId,
+                    UserId = AdminAccountId
+                }
+            );
+
+            modelBuilder.Entity<RolePermission>().HasData(SeedRolePermission());
+
+        }
+
+        private static List<RolePermission> SeedRolePermission()
+        {
+            List<RolePermission> rl = new List<RolePermission>();
+            for (int i = 1; i < 5; i++)
+            {
+                rl.Add(new RolePermission
+                {
+                    PermissionId = i.ToString(),
+                    RoleId = AdminRoleId
+                });
+            }
+            return rl;
         }
 
         public static void ConfigIndex(this ModelBuilder modelBuilder)

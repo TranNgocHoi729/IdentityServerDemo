@@ -19,25 +19,25 @@ namespace DataAccess.Entities
 
         public string FullName { get; set; }
 
-        public string Phone { get; set; }
+        public string Phone { get; set; } = "";
 
-        public string Address { get; set; }
+        public string Address { get; set; } = "";
 
-        public Gender Gender { get; set; }
+        public Gender Gender { get; set; } = Gender.MALE;
 
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
-        public string CreatedBy { get; set; }
+        public string CreatedBy { get; set; } = "";
 
         public DateTime CreatedOn { get; set; }
 
-        public string ModifiedBy { get; set; }
+        public string ModifiedBy { get; set; } = "";
 
-        public DateTime ModifiedOn { get; set; }
+        public DateTime? ModifiedOn { get; set; }
 
-        public Status Status { get; set; }
+        public Status Status { get; set; } = Status.ACTIVED;
 
-        public string Description { get; set; }
+        public string Description { get; set; } = "";
 
         public ICollection<UserRole> UserRoles { get; set; }
     }

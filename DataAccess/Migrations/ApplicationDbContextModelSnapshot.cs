@@ -32,7 +32,7 @@ namespace DataAccess.Migrations
                         .HasColumnType("varchar(252)");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("DateTime");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -43,7 +43,7 @@ namespace DataAccess.Migrations
                         .HasColumnType("varchar(252)");
 
                     b.Property<DateTime>("ModifiedOn")
-                        .HasColumnType("DateTime");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("PermissionCode")
                         .IsRequired()
@@ -62,6 +62,60 @@ namespace DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Permissions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            CreatedBy = "",
+                            CreatedOn = new DateTime(2022, 9, 11, 19, 43, 4, 658, DateTimeKind.Local).AddTicks(9381),
+                            Description = "",
+                            ModifiedBy = "",
+                            ModifiedOn = new DateTime(2022, 9, 11, 19, 43, 4, 658, DateTimeKind.Local).AddTicks(9392),
+                            PermissionCode = "USER",
+                            PermissionName = "USER",
+                            PermissionOrder = 1,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = "2",
+                            CreatedBy = "",
+                            CreatedOn = new DateTime(2022, 9, 11, 19, 43, 4, 658, DateTimeKind.Local).AddTicks(9394),
+                            Description = "",
+                            ModifiedBy = "",
+                            ModifiedOn = new DateTime(2022, 9, 11, 19, 43, 4, 658, DateTimeKind.Local).AddTicks(9394),
+                            PermissionCode = "USER-DELETE",
+                            PermissionName = "USER-DELETE",
+                            PermissionOrder = 2,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = "3",
+                            CreatedBy = "",
+                            CreatedOn = new DateTime(2022, 9, 11, 19, 43, 4, 658, DateTimeKind.Local).AddTicks(9396),
+                            Description = "",
+                            ModifiedBy = "",
+                            ModifiedOn = new DateTime(2022, 9, 11, 19, 43, 4, 658, DateTimeKind.Local).AddTicks(9396),
+                            PermissionCode = "USER-UPDATE",
+                            PermissionName = "USER-UPDATE",
+                            PermissionOrder = 2,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = "4",
+                            CreatedBy = "",
+                            CreatedOn = new DateTime(2022, 9, 11, 19, 43, 4, 658, DateTimeKind.Local).AddTicks(9397),
+                            Description = "",
+                            ModifiedBy = "",
+                            ModifiedOn = new DateTime(2022, 9, 11, 19, 43, 4, 658, DateTimeKind.Local).AddTicks(9397),
+                            PermissionCode = "USER-ADD",
+                            PermissionName = "USER-ADD",
+                            PermissionOrder = 2,
+                            Status = 0
+                        });
                 });
 
             modelBuilder.Entity("DataAccess.Entities.Role", b =>
@@ -74,7 +128,7 @@ namespace DataAccess.Migrations
                         .HasColumnType("varchar(252)");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("DateTime");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -85,7 +139,7 @@ namespace DataAccess.Migrations
                         .HasColumnType("varchar(252)");
 
                     b.Property<DateTime>("ModifiedOn")
-                        .HasColumnType("DateTime");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("RoleName")
                         .IsRequired()
@@ -97,6 +151,30 @@ namespace DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "gafsakfi-efhjsk-fshdbe-334jsfgs-486h",
+                            CreatedBy = "",
+                            CreatedOn = new DateTime(2022, 9, 11, 19, 43, 4, 658, DateTimeKind.Local).AddTicks(9516),
+                            Description = "",
+                            ModifiedBy = "",
+                            ModifiedOn = new DateTime(2022, 9, 11, 19, 43, 4, 658, DateTimeKind.Local).AddTicks(9517),
+                            RoleName = "Admin",
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = "1f6e351a-e9e0-43a4-8706-4626f3813977",
+                            CreatedBy = "",
+                            CreatedOn = new DateTime(2022, 9, 11, 19, 43, 4, 658, DateTimeKind.Local).AddTicks(9553),
+                            Description = "",
+                            ModifiedBy = "",
+                            ModifiedOn = new DateTime(2022, 9, 11, 19, 43, 4, 658, DateTimeKind.Local).AddTicks(9553),
+                            RoleName = "UserViewer",
+                            Status = 0
+                        });
                 });
 
             modelBuilder.Entity("DataAccess.Entities.RolePermission", b =>
@@ -112,6 +190,28 @@ namespace DataAccess.Migrations
                     b.HasIndex("PermissionId");
 
                     b.ToTable("RolePermissions");
+
+                    b.HasData(
+                        new
+                        {
+                            RoleId = "gafsakfi-efhjsk-fshdbe-334jsfgs-486h",
+                            PermissionId = "1"
+                        },
+                        new
+                        {
+                            RoleId = "gafsakfi-efhjsk-fshdbe-334jsfgs-486h",
+                            PermissionId = "2"
+                        },
+                        new
+                        {
+                            RoleId = "gafsakfi-efhjsk-fshdbe-334jsfgs-486h",
+                            PermissionId = "3"
+                        },
+                        new
+                        {
+                            RoleId = "gafsakfi-efhjsk-fshdbe-334jsfgs-486h",
+                            PermissionId = "4"
+                        });
                 });
 
             modelBuilder.Entity("DataAccess.Entities.User", b =>
@@ -128,10 +228,10 @@ namespace DataAccess.Migrations
                         .HasColumnType("varchar(252)");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("DateTime");
+                        .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("DateTime");
+                    b.Property<DateTime?>("DateOfBirth")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -152,8 +252,8 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(252)");
 
-                    b.Property<DateTime>("ModifiedOn")
-                        .HasColumnType("DateTime");
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -173,6 +273,40 @@ namespace DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "dhgfd55-4234jdf-efhjsk-fshdbe-334jsfgs-486sdh",
+                            Address = "",
+                            CreatedBy = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Email = "CMCglobal_AGOS@gmail.com",
+                            FullName = "Admin",
+                            Gender = 0,
+                            ModifiedBy = "",
+                            Password = "Admin",
+                            Phone = "",
+                            Status = 0,
+                            UserName = "Admin"
+                        },
+                        new
+                        {
+                            Id = "0a938ba1-b17d-477d-b4ae-53e30c928d52",
+                            Address = "",
+                            CreatedBy = "",
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Email = "CMCglobal_AGOS@gmail.com",
+                            FullName = "Viewer",
+                            Gender = 0,
+                            ModifiedBy = "",
+                            Password = "Viewer",
+                            Phone = "",
+                            Status = 0,
+                            UserName = "Viewer"
+                        });
                 });
 
             modelBuilder.Entity("DataAccess.Entities.UserRole", b =>
@@ -188,6 +322,13 @@ namespace DataAccess.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            RoleId = "gafsakfi-efhjsk-fshdbe-334jsfgs-486h",
+                            UserId = "dhgfd55-4234jdf-efhjsk-fshdbe-334jsfgs-486sdh"
+                        });
                 });
 
             modelBuilder.Entity("DataAccess.Entities.RolePermission", b =>
